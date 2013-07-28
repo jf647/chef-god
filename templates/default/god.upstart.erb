@@ -1,0 +1,13 @@
+description "God process monitoring"
+author "James FitzGibbon <james.fitzgibbon@nsn.com>"
+
+# When to start and stop  the service
+start on runlevel [2345]
+stop on runlevel [016]
+
+# Automatically restart process if crashed
+respawn
+
+chdir "<%= @node[:god][:config_dir] %>"
+
+exec <%= @god_path %> -l <%= @node[:god][:log_dir] %>/god.log -c <%= @node[:god][:config_dir] %>/god.rb -D -P <%= @node[:god][:pid_dir] %>/god.pid
