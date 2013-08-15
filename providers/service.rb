@@ -36,7 +36,7 @@ end
 def load_current_resource
     @service = Chef::Resource::GodService.new(new_resource.service_name)
     @config_path = "#{node[:god][:config_dir]}/services-enabled/#{new_resource.service_name}.god"
-    @god_bin = "#{node[:cli_gem][:install_dir]['god']}/bin/god"
+    @god_bin = "#{node[:cligem][:install_dir]['god']}/bin/god"
     
     begin
         if 0 == run_command_with_systems_locale( :command => "#{@god_bin} status" )

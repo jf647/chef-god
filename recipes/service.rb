@@ -12,7 +12,7 @@ case node[:god][:init_style]
             group "root"
             mode 0644
             variables(
-                :god_path => "#{node[:cli_gem][:install_dir]['god']}/bin/god",
+                :god_path => "#{node[:cligem][:install_dir]['god']}/bin/god",
             )
             notifies :restart, "service[god]", :delayed
         end
